@@ -10,6 +10,8 @@ var template = React.createElement(
     "Something new"
 );
 
+
+
 var appRoot = document.getElementById("app");
 
 ReactDOM.render(template, appRoot);
