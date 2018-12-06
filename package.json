@@ -1,0 +1,13 @@
+{
+  "name": "indecision-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/cineron/indecision-app.git",
+  "author": "cineron <cineron+gh@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "babel-preset-env": "1.5.2",
+    "babel-preset-react": "6.24.1"
+  }
+}
