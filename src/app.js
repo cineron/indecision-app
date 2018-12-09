@@ -1,17 +1,24 @@
 console.log("app.js is running!");
 
 //create app object
+// only render the wubtitle (and p tag) if subtitle exists
+// render new p tag if options.length > 0
 var appObj = {
-    title: "Indecision_App",
-    subtitle: "Text from object property"
+    title: "Indecision App",
+    subtitle: "Let your computer decide.",
+    options: ["one," "two"]
+};
+
+function getSubtitle(subtitle) {
+    if (subtitle) {
+        return <p>{appObj.subtitle}</p>
+    }
 }
-
-
 //JSX - JavaScript XML
 var template = (
 <div>
     <h1>{appObj.title}</h1>
-    <p>{appObj.subtitle}</p>
+    {getSubtitle(appObj.subtitle)}
     <ol>
         <li>Item one</li>
         <li>Item one</li>
@@ -22,24 +29,25 @@ var template = (
 // div, h1:name, p:age, p:location
 var user = {
     name: "Mike",
-    age: 46,
-    location: ""
+    age: 18,
+    location: "Austin",
 };
-
+//if statement
+//
 function getLocation(location) {
     if (location) {
         return <p>Location: {location}</p>;
     } 
 }
-
+//ternary
 var templateTwo = (
     <div>
-        <h1>{user.name + "!"}!</h1>
-        <p>Age: {user.age}</p>
+        <h1>{user.name ? user.name : "Anonymous"}!</h1>
+        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
         {getLocation(user.location)}
     </div>
 );
 var appRoot = document.getElementById("app");
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
 // ReactDOM.render(templateTwo, appRoot);
