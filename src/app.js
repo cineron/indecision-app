@@ -3,31 +3,33 @@ console.log("app.js is running!");
 //create app object
 // only render the wubtitle (and p tag) if subtitle exists
 // render new p tag if options.length > 0
-var appObj = {
+const appObj = {
     title: "Indecision App",
     subtitle: "Let your computer decide.",
-    options: ["one," "two"]
+    options: ["one", "two"]
 };
 
-function getSubtitle(subtitle) {
-    if (subtitle) {
-        return <p>{appObj.subtitle}</p>
-    }
-}
+// function getSubtitle(subtitle) {
+//     if (subtitle) {
+//         return <h2>{appObj.subtitle}</h2>
+//     }
+// }
 //JSX - JavaScript XML
-var template = (
+const template = (
 <div>
     <h1>{appObj.title}</h1>
-    {getSubtitle(appObj.subtitle)}
+    {/* {getSubtitle(appObj.subtitle)} */}
+    {appObj.subtitle && <h2>{appObj.subtitle}</h2>}
+    <p>{appObj.options.length > 0 ? "Your options" : "No options"}</p>
     <ol>
-        <li>Item one</li>
-        <li>Item one</li>
+        <li>item one</li>
+        <li>item two</li>
     </ol>
 </div>);
 
 //create your own template
 // div, h1:name, p:age, p:location
-var user = {
+const user = {
     name: "Mike",
     age: 18,
     location: "Austin",
@@ -40,14 +42,14 @@ function getLocation(location) {
     } 
 }
 //ternary
-var templateTwo = (
+const templateTwo = (
     <div>
         <h1>{user.name ? user.name : "Anonymous"}!</h1>
         {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
         {getLocation(user.location)}
     </div>
 );
-var appRoot = document.getElementById("app");
+const appRoot = document.getElementById("app");
 
 ReactDOM.render(template, appRoot);
 // ReactDOM.render(templateTwo, appRoot);
