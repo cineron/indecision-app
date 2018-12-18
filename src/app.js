@@ -27,7 +27,14 @@ const onFormSubmit = (e) => {
 const handleRemove = () => {
     appObj.options = [];
     renderForm();
-}
+};
+
+const handleMakeDecision = () => {
+    const randNum = Math.floor(Math.random() * appObj.options.length);
+    console.log(randNum);
+    const pick = appObj.options[randNum];
+    alert(pick);
+};
 
 const appRoot = document.getElementById("app");
 
@@ -36,8 +43,8 @@ const renderForm = () => {
         <div>
             <h1>{appObj.title}</h1>
             {appObj.subtitle && <h2>{appObj.subtitle}</h2>}
-            <p>{appObj.options.length > 0 ? "Your options" : "No options"}</p>
-            <p>{appObj.options.length}</p>
+            <p>{appObj.options.length > 0 ? "Your options:" : "No options"}</p>
+            <button disabled={appObj.options.length === 0} onClick={handleMakeDecision}>What Should I do?</button>
             <ol>
                 {
                     appObj.options.map((opt) => {
