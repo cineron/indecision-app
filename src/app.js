@@ -24,6 +24,10 @@ const onFormSubmit = (e) => {
     }    
 };
 
+const handleRemove = () => {
+    appObj.options = [];
+    renderForm();
+}
 
 const appRoot = document.getElementById("app");
 
@@ -38,6 +42,7 @@ const renderForm = () => {
                 <li>item one</li>
                 <li>item two</li>
             </ol>
+            <button onClick={handleRemove}>Remove All</button>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option"/>
                 <button>Add Option</button>
