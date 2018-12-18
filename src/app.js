@@ -39,8 +39,11 @@ const renderForm = () => {
             <p>{appObj.options.length > 0 ? "Your options" : "No options"}</p>
             <p>{appObj.options.length}</p>
             <ol>
-                <li>item one</li>
-                <li>item two</li>
+                {
+                    appObj.options.map((opt) => {
+                        return <li key={opt}>{opt}</li>;
+                    })
+                }
             </ol>
             <button onClick={handleRemove}>Remove All</button>
             <form onSubmit={onFormSubmit}>
