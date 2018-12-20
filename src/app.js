@@ -1,3 +1,16 @@
+class IndecisionApp extends React.Component {
+    render(){
+        return (
+            <div>
+                <Header />
+                <Action />
+                <Options />
+                <AddOption />
+            </div>
+        )
+    }
+}
+
 class Header extends React.Component{
     render(){
         return (
@@ -19,8 +32,17 @@ class Action extends React.Component {
     }
 }
 
-//CHALLENGE - Options Component
+//CHALLENGE - Options Component that holds all options
 class Options extends React.Component {
+    render() {
+        return (
+            <Option />
+        );
+    }
+}
+
+//CHALLENGE - Add Option component that handles individual options
+class Option extends React.Component {
     render() {
         return (
             <div>
@@ -31,10 +53,11 @@ class Options extends React.Component {
                     <li>Option 3</li>
                 </ol>
             </div>
-        );
+        )
     }
 }
-//CHALLENGE - Add Option Component
+
+//CHALLENGE - Add AddOptions Component handles button for adding option
 class AddOption extends React.Component {
     render() {
         return (
@@ -45,13 +68,4 @@ class AddOption extends React.Component {
     }
 }
 
-const jsx = (
-    <div>
-        <Header />
-        <Action />
-        <Options />
-        <AddOption />
-    </div>
-);
-
-ReactDOM.render(jsx, document.getElementById("app"));
+ReactDOM.render(<IndecisionApp />, document.getElementById("app"));
