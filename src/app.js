@@ -27,17 +27,24 @@ class Header extends React.Component{
 }
 
 class Action extends React.Component {
+    handlePick(){
+        alert("handlePick called")
+    }
     render(){
         return(
             <div>
-                <button>What Should I Do?</button>
+                <button onClick={this.handlePick}>What Should I Do?</button>
             </div>
         );
     }
 }
 
 //CHALLENGE - Options Component that holds all options
+//CHALLENGE - Remove all button - alert
 class Options extends React.Component {
+    handleRemoveAll(){
+        alert("handleRemoveAll called")
+    }
     render() {
         return (
             <div>
@@ -46,6 +53,7 @@ class Options extends React.Component {
                 {this.props.options.map((option) => 
                     <Option key={option} optionText={option} />
                 )}
+                <button onClick={this.handleRemoveAll}>Remove All Options</button>
             </div>
         );
     }
@@ -63,11 +71,32 @@ class Option extends React.Component {
 }
 
 //CHALLENGE - Add AddOptions Component handles button for adding option
+//CHALLENGE - 1. Setup input form
+// 2. create onSubmit
+// 3. handleAddOption -> fetch value -> if value, alert!
 class AddOption extends React.Component {
+    handleFormSubmit(e) {
+        e.preventDefault();
+        // console.log("form submitted!");
+        const option = e.target.elements.option.value.trim();
+
+        //if there is input
+        if (option) {
+            //put the input in an array
+            alert(option);
+            
+            // options.push(option);
+            //clear the input
+            e.target.elements.option.value = '';        
+        }    
+    };
     render() {
         return (
             <div>
-                <button>Add an Option</button>
+                <form onSubmit={this.handleFormSubmit}>
+                    <input type="text" name="option" />
+                    <button>Add an Option</button>
+                </form>
             </div>
         );
     }
