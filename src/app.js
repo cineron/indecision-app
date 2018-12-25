@@ -42,8 +42,15 @@ class Action extends React.Component {
 //CHALLENGE - Options Component that holds all options
 //CHALLENGE - Remove all button - alert
 class Options extends React.Component {
+    constructor(props){
+        super(props);//gives access to this.props
+        //add on behavior here
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
     handleRemoveAll(){
-        alert("handleRemoveAll called")
+        console.log(this.props.options);
+        
+        // alert("handleRemoveAll called")
     }
     render() {
         return (
@@ -53,7 +60,7 @@ class Options extends React.Component {
                 {this.props.options.map((option) => 
                     <Option key={option} optionText={option} />
                 )}
-                <button onClick={this.handleRemoveAll}>Remove All Options</button>
+                <button onClick={this.handleRemoveAll.bind(this)}>Remove All Options</button>
             </div>
         );
     }
