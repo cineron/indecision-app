@@ -10,6 +10,32 @@ class IndecisionApp extends React.Component {
             options: props.options
         };
     }
+    //Lifecycle methods only work in Class-based components
+    componentDidMount() {
+        //test for valid JSON
+        try {
+            console.log("fetching data");
+            const json = localStorage.getItem("options");
+            const options = JSON.parse(json);
+            
+            if (options) {
+            this.setState(() => ({ options: options }));
+            }
+            
+        } catch (error) {
+            //Do nothing
+        }
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.options.length !== this.state.options.length) {
+            const json = JSON.stringify(this.state.options);
+            localStorage.setItem("options", json);
+            console.log("saving data");
+        }   
+    }
+    componentWillUnmount(){
+        console.log("cWU");
+    }
     //handleDeleteOptions
     handleDeleteOptions(){
         this.setState(() => ({ options: [] }));
@@ -63,7 +89,7 @@ class IndecisionApp extends React.Component {
 }
 //convert Class to Stateless Function Component
 const Header = (props) => {
-    console.log(props);
+    // console.log(props);
     //conditional logic for subtitle
     return (
         <div>
@@ -97,6 +123,8 @@ const Options = (props) => {
     return (
         <div>
             <h3>Your Options:</h3>
+
+            {props.options.length === 0 && <p>Please add an option to get started!</p>}
 
             {props.options.map((option) => (
                 <Option 
@@ -140,8 +168,9 @@ class AddOption extends React.Component {
         this.setState(() => ({ error }));
 
         //moved error logic up to component
+        if (!error) {
             e.target.elements.option.value = '';        
-        // }    
+        }   
     };
     render() {
         return (
