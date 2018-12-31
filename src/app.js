@@ -6,7 +6,7 @@ class IndecisionApp extends React.Component {
         this.handleAddOption = this.handleAddOption.bind(this);
         this.state = {
             // options: ["Thing One", "Thing 2", "Thing Four"]
-            options: []
+            options: props.options
         };
     }
     //handleDeleteOptions
@@ -17,9 +17,7 @@ class IndecisionApp extends React.Component {
             };
         });
     }
-    //CHALLENGE
-    //handlePick - pass down to Action and setup onClick - bind here
-    //  randomly pick an option and alert it
+
     handlePick(){
         const randNum = Math.floor(Math.random() * this.state.options.length);
         // console.log(randNum);
@@ -46,7 +44,7 @@ class IndecisionApp extends React.Component {
         const subtitle = "Let a Computer Decide!";
         return (
             <div>
-                <Header title={title} subtitle={subtitle} />
+                <Header subtitle={subtitle} />
                 <Action 
                     hasOptions={this.state.options.length > 0} 
                     handlePick={this.handlePick}
@@ -65,24 +63,22 @@ class IndecisionApp extends React.Component {
 //convert Class to Stateless Function Component
 const Header = (props) => {
     console.log(props);
+    //conditional logic for subtitle
     return (
         <div>
             <h1>{props.title}</h1>
-            <h2>{props.subtitle}</h2>
+            {props.subtitle && <h2>{props.subtitle}</h2>}
         </div>
     );
 }
-// class Header extends React.Component{
-//     render(){
-//         console.log(this.props);
-//         return (
-//             <div>
-//                 <h1>{this.props.title}</h1>
-//                 <h2>{this.props.subtitle}</h2>
-//             </div>
-//         );
-//     }
-// }
+//example use of defaultProps
+IndecisionApp.defaultProps = {
+    options: []
+}
+
+Header.defaultProps = {
+    title: "Indecision App"
+};
 
 //convert Class to Stateless Function Component
 const Action = (props) => {
@@ -94,50 +90,6 @@ const Action = (props) => {
         </div>
     );
 };
-// class Action extends React.Component {
-//     //---- No longer needed using Props ----//
-//         // handlePick(){
-//     //     alert("handlePick called")
-//     // }
-//     render(){
-//         return(
-//             <div>
-//                 <button onClick={this.props.handlePick}
-//                     disabled={!this.props.hasOptions}
-//                 >What Should I Do?</button>
-//             </div>
-//         );
-//     }
-// }
-
-//CHALLENGE - Options Component that holds all options
-//CHALLENGE - Remove all button - alert
-// class Options extends React.Component {
-//     // THIS IS NO LONGER NEEDED DUE TO PASSING PROPS DOWN
-//     // constructor(props){
-//     //     super(props);//gives access to this.props
-//     //     //add on behavior here
-//     //     this.handleRemoveAll = this.handleRemoveAll.bind(this);
-//     // }
-//     // handleRemoveAll(){
-//     //     console.log(this.props.options);
-        
-//     //     // alert("handleRemoveAll called")
-//     // }
-
-//     render() {
-//         return (
-//             <div>
-//                 <h3>Your Options:</h3>
-
-//                 {this.props.options.map((option) => 
-//                     <Option key={option} optionText={option} />
-//                 )}
-//                 <button onClick={this.props.handleDeleteOptions}>Remove All Options</button>
-//             </div>
-//         );
-//     }
-// }
 
 //convert Class to Stateless Function Component
 const Options = (props) => {
@@ -161,21 +113,8 @@ const Option = (props) => {
         </div>
     );
 }
-//CHALLENGE - Add Option component that handles individual options
-// class Option extends React.Component {
-//     render() {
-//         return (
-//             <div>
-//                 {this.props.optionText}
-//             </div>
-//         )
-//     }
-// }
 
-//CHALLENGE - Add AddOptions Component handles button for adding option
-//CHALLENGE - 1. Setup input form
-// 2. create onSubmit
-// 3. handleAddOption -> fetch value -> if value, alert!
+
 class AddOption extends React.Component {
     constructor(props){
         super(props)
@@ -212,15 +151,5 @@ class AddOption extends React.Component {
         );
     }
 }
-
-//stateless functional component
-// const User = () => {
-//     return (
-//         <div>
-//             <p>Name: </p>
-//             <p>Age: </p>
-//         </div>
-//     );
-// };
 
 ReactDOM.render(<IndecisionApp />, document.getElementById("app"));
