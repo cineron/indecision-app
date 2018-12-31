@@ -62,74 +62,115 @@ class IndecisionApp extends React.Component {
         )
     }
 }
-
-class Header extends React.Component{
-    render(){
-        console.log(this.props);
-        return (
-            <div>
-                <h1>{this.props.title}</h1>
-                <h2>{this.props.subtitle}</h2>
-            </div>
-        );
-    }
+//convert Class to Stateless Function Component
+const Header = (props) => {
+    console.log(props);
+    return (
+        <div>
+            <h1>{props.title}</h1>
+            <h2>{props.subtitle}</h2>
+        </div>
+    );
 }
+// class Header extends React.Component{
+//     render(){
+//         console.log(this.props);
+//         return (
+//             <div>
+//                 <h1>{this.props.title}</h1>
+//                 <h2>{this.props.subtitle}</h2>
+//             </div>
+//         );
+//     }
+// }
 
-class Action extends React.Component {
-    //---- No longer needed using Props ----//
-        // handlePick(){
-    //     alert("handlePick called")
-    // }
-    render(){
-        return(
-            <div>
-                <button onClick={this.props.handlePick}
-                    disabled={!this.props.hasOptions}
-                >What Should I Do?</button>
-            </div>
-        );
-    }
-}
+//convert Class to Stateless Function Component
+const Action = (props) => {
+    return(
+        <div>
+            <button onClick={props.handlePick}
+                disabled={!props.hasOptions}
+            >What Should I Do?</button>
+        </div>
+    );
+};
+// class Action extends React.Component {
+//     //---- No longer needed using Props ----//
+//         // handlePick(){
+//     //     alert("handlePick called")
+//     // }
+//     render(){
+//         return(
+//             <div>
+//                 <button onClick={this.props.handlePick}
+//                     disabled={!this.props.hasOptions}
+//                 >What Should I Do?</button>
+//             </div>
+//         );
+//     }
+// }
 
 //CHALLENGE - Options Component that holds all options
 //CHALLENGE - Remove all button - alert
-class Options extends React.Component {
-    // THIS IS NO LONGER NEEDED DUE TO PASSING PROPS DOWN
-    // constructor(props){
-    //     super(props);//gives access to this.props
-    //     //add on behavior here
-    //     this.handleRemoveAll = this.handleRemoveAll.bind(this);
-    // }
-    // handleRemoveAll(){
-    //     console.log(this.props.options);
+// class Options extends React.Component {
+//     // THIS IS NO LONGER NEEDED DUE TO PASSING PROPS DOWN
+//     // constructor(props){
+//     //     super(props);//gives access to this.props
+//     //     //add on behavior here
+//     //     this.handleRemoveAll = this.handleRemoveAll.bind(this);
+//     // }
+//     // handleRemoveAll(){
+//     //     console.log(this.props.options);
         
-    //     // alert("handleRemoveAll called")
-    // }
+//     //     // alert("handleRemoveAll called")
+//     // }
 
-    render() {
-        return (
-            <div>
-                <h3>Your Options:</h3>
+//     render() {
+//         return (
+//             <div>
+//                 <h3>Your Options:</h3>
 
-                {this.props.options.map((option) => 
-                    <Option key={option} optionText={option} />
-                )}
-                <button onClick={this.props.handleDeleteOptions}>Remove All Options</button>
-            </div>
-        );
-    }
+//                 {this.props.options.map((option) => 
+//                     <Option key={option} optionText={option} />
+//                 )}
+//                 <button onClick={this.props.handleDeleteOptions}>Remove All Options</button>
+//             </div>
+//         );
+//     }
+// }
+
+//convert Class to Stateless Function Component
+const Options = (props) => {
+    return (
+        <div>
+            <h3>Your Options:</h3>
+
+            {props.options.map((option) => 
+                <Option key={option} optionText={option} />
+            )}
+            <button onClick={props.handleDeleteOptions}>Remove All Options</button>
+        </div>
+    );
 }
 
+//convert Class to Stateless Function Component
+const Option = (props) => {
+    return (
+        <div>
+            {props.optionText}
+        </div>
+    );
+}
 //CHALLENGE - Add Option component that handles individual options
-class Option extends React.Component {
-    render() {
-        return (
-            <div>
-                {this.props.optionText}
-            </div>
-        )
-    }
-}
+// class Option extends React.Component {
+//     render() {
+//         return (
+//             <div>
+//                 {this.props.optionText}
+//             </div>
+//         )
+//     }
+// }
 
 //CHALLENGE - Add AddOptions Component handles button for adding option
 //CHALLENGE - 1. Setup input form
@@ -171,5 +212,15 @@ class AddOption extends React.Component {
         );
     }
 }
+
+//stateless functional component
+// const User = () => {
+//     return (
+//         <div>
+//             <p>Name: </p>
+//             <p>Age: </p>
+//         </div>
+//     );
+// };
 
 ReactDOM.render(<IndecisionApp />, document.getElementById("app"));
