@@ -7,7 +7,7 @@ class IndecisionApp extends React.Component {
         this.handleDeleteOption = this.handleDeleteOption.bind(this);
         this.state = {
             // options: ["Thing One", "Thing 2", "Thing Four"]
-            options: props.options
+            options: []
         };
     }
     //Lifecycle methods only work in Class-based components
