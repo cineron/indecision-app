@@ -1,14 +1,10 @@
-// import "./utils.js";
-// import subtract, { square, add } from "./utils.js"; //{references} from file
-// //default reference comes first -- it can be called anything
+// install -> import -> use
+// import validator from "validator";
 
-// console.log("new app.js is running!!!");
-// console.log(square(5));
-// console.log(add(5, 5));
-// console.log(subtract(100, 81));
+// console.log(validator.isEmail("test+test@gmail.com"));
+import React from "react";
+import ReactDOM from "react-dom";
 
+const template = React.createElement('p',{},"testing 1,2,3...");
 
-import isSenior, { isAdult, canDrink } from "./person.js";
-console.log(isAdult(13));
-console.log(canDrink(25));
-console.log(isSenior(65));
+ReactDOM.render(template, document.getElementById("app"));

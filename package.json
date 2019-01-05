@@ -11,12 +11,16 @@
     "build": "webpack --watch",
     "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react": "16.0.0",
+    "react-dom": "16.0.0",
+    "validator": "^10.10.0"
+  },
   "devDependencies": {
     "babel-cli": "6.24.1",
     "babel-preset-env": "1.5.2",
     "babel-preset-react": "6.24.1",
-    "live-server": "^1.2.3",
+    "live-server": "^1.2.1",
     "webpack": "^4.28.3",
     "webpack-cli": "^3.2.0"
   }
