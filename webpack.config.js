@@ -22,5 +22,10 @@ module.exports = {
         }]
     },
     // add source map module
-    devtool: "cheap-module-eval-source-map"
+    devtool: "cheap-module-eval-source-map",
+
+    // set up dev server
+    devServer: {
+        contentBase: path.join(__dirname, "public")
+    }
 };
