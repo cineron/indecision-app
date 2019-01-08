@@ -2,14 +2,21 @@ import React from "react";
 
 //export default works for class definitions, not variables
 export default class AddOption extends React.Component {
-    constructor(props){
-        super(props)
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
-        this.state = {
-            error: undefined
-        };
-    }
-    handleFormSubmit(e) {
+    state = {
+        error: undefined
+    };
+    // constructor removed for JSnext syntax
+    // constructor(props){
+    //     super(props)
+    //     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    //     // --- moved above for JSnext syntax
+    //     // this.state = {
+    //     //     error: undefined
+    //     // };
+    // }
+
+    //converted to arrow function for JSnext syntax
+    handleFormSubmit = (e) => {
         e.preventDefault();
         // console.log("form submitted!");
         const option = e.target.elements.option.value.trim();

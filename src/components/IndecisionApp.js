@@ -4,18 +4,26 @@ import Options from "./Options";
 import Header from "./Header";
 import Action from "./Action";
 
+// pull the state out of constructor
+// convert all 4 event handlers to class properties (arrow functions)
+// delete the constructor completely
+// start with class properties and end with method
+
 export default class IndecisionApp extends React.Component {
-    constructor(props){
-        super(props);
-        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        this.handlePick = this.handlePick.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
-        this.state = {
-            // options: ["Thing One", "Thing 2", "Thing Four"]
-            options: []
-        };
-    }
+    state = {
+                options: []
+            };
+    // constructor(props){
+    //     super(props);
+    //     this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+    //     this.handlePick = this.handlePick.bind(this);
+    //     this.handleAddOption = this.handleAddOption.bind(this);
+    //     this.handleDeleteOption = this.handleDeleteOption.bind(this);
+    //     this.state = {
+    //         // options: ["Thing One", "Thing 2", "Thing Four"]
+    //         options: []
+    //     };
+    // }
     //Lifecycle methods only work in Class-based components
     componentDidMount() {
         //test for valid JSON
@@ -43,24 +51,24 @@ export default class IndecisionApp extends React.Component {
         console.log("cWU");
     }
     //handleDeleteOptions
-    handleDeleteOptions(){
+    handleDeleteOptions = () => {
         this.setState(() => ({ options: [] }));
     }
 
-    handleDeleteOption(optionToRemove){
+    handleDeleteOption = (optionToRemove) => {
         // console.log("hDO", option);
         this.setState((prevState) => ({
             options: prevState.options.filter((option) => optionToRemove !== option)
         }));
     }
 
-    handlePick(){
+    handlePick = () => {
         const randNum = Math.floor(Math.random() * this.state.options.length);
         // console.log(randNum);
         const pick = this.state.options[randNum];
         alert(pick);
     }
-    handleAddOption(option){
+    handleAddOption = (option) => {
         // console.log(option);
         if (!option) {
             return "Please enter a valid value."
