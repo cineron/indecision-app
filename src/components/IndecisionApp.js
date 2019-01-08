@@ -3,6 +3,7 @@ import AddOption from "./AddOption";
 import Options from "./Options";
 import Header from "./Header";
 import Action from "./Action";
+import OptionModal from "./OptionModal";
 
 // pull the state out of constructor
 // convert all 4 event handlers to class properties (arrow functions)
@@ -11,7 +12,8 @@ import Action from "./Action";
 
 export default class IndecisionApp extends React.Component {
     state = {
-                options: []
+                options: [],
+                selectedOption: undefined
             };
     // constructor(props){
     //     super(props);
@@ -50,6 +52,11 @@ export default class IndecisionApp extends React.Component {
     componentWillUnmount(){
         console.log("cWU");
     }
+    //handleClearPick
+    handleClearPick = () => {
+        this.setState(() => ({ selectedOption: undefined }));
+    }
+
     //handleDeleteOptions
     handleDeleteOptions = () => {
         this.setState(() => ({ options: [] }));
@@ -66,7 +73,10 @@ export default class IndecisionApp extends React.Component {
         const randNum = Math.floor(Math.random() * this.state.options.length);
         // console.log(randNum);
         const pick = this.state.options[randNum];
-        alert(pick);
+        //CHALLENGE - set pick
+        this.setState(() => ({
+            selectedOption: pick
+        }));
     }
     handleAddOption = (option) => {
         // console.log(option);
@@ -96,6 +106,10 @@ export default class IndecisionApp extends React.Component {
                 />
                 <AddOption 
                     handleAddOption={this.handleAddOption}
+                />
+                <OptionModal 
+                    selectedOption={this.state.selectedOption}
+                    handleClearPick={this.handleClearPick}
                 />
             </div>
         )
