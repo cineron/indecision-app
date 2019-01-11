@@ -1,8 +1,7 @@
 import React from "react";
 
 //convert Class to Stateless Function Component
-const Option = (props) => {
-    return (
+const Option = (props) => (
         <div>
             {props.optionText}
             <button onClick={(e) => {
@@ -10,6 +9,5 @@ const Option = (props) => {
             }} >Remove</button>
         </div>
     );
-}
 
 export default Option;

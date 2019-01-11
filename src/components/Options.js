@@ -2,8 +2,7 @@ import React from "react";
 import Option from "./Option";
 
 //convert Class to Stateless Function Component
-const Options = (props) => {
-    return (
+const Options = (props) => (
         <div>
             <h3>Your Options:</h3>
 
@@ -19,6 +18,5 @@ const Options = (props) => {
             <button onClick={props.handleDeleteOptions}>Remove All Options</button>
         </div>
     );
-}
 
 export default Options;
