@@ -4,7 +4,7 @@
     margin-bottom: $xl-size;
 }
 // widget message
-.widget-message {
+.widget__message {
     color: $off-white;
     margin: 0 auto;
     padding: $l-size;
@@ -23,4 +23,10 @@
 
 .widget-header__title {
     margin: 0 auto;
+}
+
+.widget-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: $s-size;
 }
