@@ -3,10 +3,13 @@ import Option from "./Option";
 
 //convert Class to Stateless Function Component
 const Options = (props) => (
-        <div>
-            <h3>Your Options:</h3>
+    <div>
 
-            {props.options.length === 0 && <p>Please add an option to get started!</p>}
+        <div className="widget-header">
+            <h3 className="widget-header__title">Your Options:</h3>
+        </div>
+
+            {props.options.length === 0 && <p className="widget-message">Please add an option to get started!</p>}
 
             {props.options.map((option) => (
                 <Option 
@@ -18,7 +21,7 @@ const Options = (props) => (
             <button 
             className="button button--link"
             onClick={props.handleDeleteOptions}>Remove All Options</button>
-        </div>
+    </div>
     );
 
 export default Options;
